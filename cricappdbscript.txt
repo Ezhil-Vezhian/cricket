@@ -1,0 +1,273 @@
+
+CREATE TABLE `userlogin` (
+	`userloginid`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	'logintype'     TEXT,
+	`userid`	TEXT,
+	`password`	TEXT,
+	`usertype`	TEXT,
+	'userrole' TEXT,
+	`username` TEXT,
+	`emailid` TEXT,
+	`contactno` TEXT,
+	'City' TEXT,
+	'COUNTRY' TEXT,
+	'registereddate' TEXT,
+	'lastlogindate' TEXT,
+	`active` TEXT
+);
+
+CREATE TABLE `matchofficials` (
+	`matchofficialsid`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	'userID' INTEGER,
+	`name`	TEXT,
+	`type`	TEXT,
+	`preferedcity`	TEXT,
+	`preferedlocation` TEXT,
+	`dob` TEXT,
+	`availability` TEXT,
+	`contactno` TEXT,
+	`emailid` TEXT,
+	`active` TEXT
+);
+
+
+CREATE TABLE `matchmaster` (
+	`matchid`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`seriesid`	INTEGER,
+	`seriestype`	TEXT,
+	`seriesstage`	TEXT,
+	`matchtype`	TEXT,
+	`matchdate`	TEXT,
+	`time`	TEXT,
+	`venue`	TEXT,
+	`city`	TEXT,
+	`country` TEXT,
+	`pitchtype` TEXT,
+	`weather` TEXT,
+	`team1id` INTEGER,
+	`team2id` INTEGER,
+	`team1name` TEXT,
+	`team2name` TEXT,
+	`umpire1id` INTEGER,
+	`umpire2id` INTEGER,
+	`umpire3id` INTEGER,
+	`scorer1id` INTEGER,
+	`scorer2id` INTEGER,
+	`toss` TEXT,
+	`inn1startdatetime` TEXT,
+	`inn2startdatetime` TEXT,
+	`inn3startdatetime` TEXT,
+	`inn4startdatetime` TEXT,
+	`result` TEXT,
+	`team1points` TEXT,
+	`team2points` TEXT
+	
+);
+
+
+CREATE TABLE `series` (
+	`seriesid`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`name`	TEXT,
+	`message`	TEXT,
+	`type`	TEXT,
+	`city` TEXT,
+	`venue` TEXT,
+	`registrationfee` TEXT,
+	`startdate` TEXT,
+	`enddate` TEXT,
+	`contactname` TEXT,
+	`contactno` TEXT
+	`emailid` TEXT
+	`otherdetails` TEXT
+);
+
+
+CREATE TABLE `playerprofile` (
+	`profileid`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`loginid`	TEXT,
+	`firstname`	TEXT,
+	`lastname`	TEXT,
+	`dob` TEXT,
+	`school` TEXT,
+	`type` TEXT,
+	`othersportsdata` TEXT,
+	`majorteams` TEXT,
+	`state` TEXT,
+	`country` TEXT
+	`profilepicture` BLOB
+	`videolinks` TEXT,
+	`twitterid` TEXT,
+	`emailid` TEXT,
+	'summary' TEXT
+);
+
+
+CREATE TABLE `teaminfo` (
+	`teamid`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`teamname`	TEXT,
+	`clubid`	INTEGER,
+	`addr` TEXT,
+	`contactname` TEXT,
+	`contactemailid` TEXT,
+	`contactno` TEXT,
+	`website` TEXT,
+	`headcoach` TEXT,
+	`headcoachconactno` TEXT
+);
+
+
+CREATE TABLE `clubinfo` (
+	`clubid`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`clubname`	TEXT,
+	`addr` TEXT,
+	`contactname` TEXT,
+	`contactemailid` TEXT,
+	`contactno` TEXT,
+	`website` TEXT
+);
+
+CREATE TABLE `teammatches` (
+	`teammatchesid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`matchid`	INTEGER ,
+	`teamid`	INTEGER,
+	`playerid` INTEGER,
+	`playername` TEXT,
+	`battingstyle` TEXT,
+	`bowlingstyle` TEXT,
+	'role' 
+);
+
+
+
+CREATE TABLE `fieldsetting` (
+	`fieldsettingid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`matchid`	INTEGER,
+	`inningsno` TEXT,
+	`fieldteamid` INTEGER,
+	`overno` INTEGER,
+	`bowlerprofileid` INTEGER,
+	`fieldwizardid` INTEGER,
+	`position1` INTEGER,
+	`position2` INTEGER,
+	`position3` INTEGER,
+	`position4` INTEGER,
+	`position5` INTEGER,
+	`position6` INTEGER,
+	`position7` INTEGER,
+	`position8` INTEGER,
+	`position9` INTEGER,
+	`position10` INTEGER
+);
+
+CREATE TABLE `fieldwizard` (
+	`fieldwizardid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`fieldimgname`	text,
+	`fieldwizardtitle` text,
+	`BowlerType` text,
+	`position1` text,
+	`position2` text,
+	`position3` text,
+	`position4` text,
+	`position5` text,
+	`position6` text,
+	`position7` text,
+	`position8` text,
+	`position9` text,
+	`position10` text
+);
+
+CREATE TABLE `ballbyball` (
+	`matchid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`inningsno`	text,
+	`fieldingteamid` INTEGER,
+	`battingteamid` INTEGER,
+	`ballno` text,
+	`overno` text,
+	`bowlerprofileid` INTEGER,
+	`batsmanprofileid` INTEGER,
+	`bowlertype` text,
+	`batsmantype` text,
+	`bowlergaurd` text,
+	`fieldsettingid` INTEGER,
+	`ballpitchno` text,
+	`ballheightdeviationno` text,
+	`batsmanshottype` text,
+	`batsmanshotcontrol` text,
+	`batsmanwagonangle` text,
+	`batsmanwagonlength` text,
+	`runsfrombat` text,
+	`extrastype` text,
+	`extrasruns` text,
+	`totalrunsfromball` text,
+	`wickettype` text,
+	`fieldingtype` text,
+	`fielderprofileid` INTEGER
+);
+
+CREATE TABLE `battingscorecard` (
+	`battingscorecardid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`inningsno` text, 
+	`matchid`  INTEGER,
+	`teamid` INTEGER,
+	`profileid` INTEGER,
+	`name` text,
+	`battingno` INTEGER,
+	`startdatetime` text,
+	`oversleft` text,
+	`runsscored` text,
+	`ballsfaced` text,
+	`dots` text,
+	`four` text,
+	`six` text,
+	`outtype` text,
+	`outby` text,
+	`outdatetime` text
+);
+
+CREATE TABLE `bowlingscorecard` (
+	`bowlingscorecardid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`inningsno` text, 
+	`matchid`  INTEGER,
+	`teamid` INTEGER,
+	`profileid` INTEGER,
+	`name` text,
+	`bowlingno` INTEGER,
+	`overs` text,
+	`maidens` text,
+	`runsgivenbat` text,
+	`wicketstaken` text,
+	`nb` text,
+	`wide` text,
+	`totalruns` text
+);
+
+CREATE TABLE `matchsummary` (
+	`matchsummaryid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`matchid`  INTEGER,
+	`inningsactive` TEXT,
+	`inningsno` TEXT,
+	`matchday` text,
+	`battingteamid` INTEGER,
+	`battingteamname` TEXT,
+	`fieldingteamid` INTEGER,
+	`fieldingteamname` TEXT,
+	`totalscore` text,
+	`totalwickets` text,
+	`overs` text,
+	`totalnb` text,
+	`totalwide` text,
+	`totalbye` text,
+	`totallb` text,
+	`inningsstartdatetime` text,
+	`inningsenddatetime` text
+);
+
+CREATE TABLE `matchfow` (
+	`matchfowid` INTEGER PRIMARY KEY AUTOINCREMENT,
+	`matchid`  INTEGER,
+	`inningsno` TEXT,
+	`battingteamid` INTEGER,
+	`batsmanname` TEXT,
+	`fow` TEXT,
+	`overno` text
+);
